@@ -1,8 +1,10 @@
 package ntnu.idatt2001.henriabu.finalproject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -26,7 +28,7 @@ public class PrimaryController {
                 "G");
         postalCodeRegister.addPostalCode(p);
         readFromFile();
-        tableView.setItems(getPostalCodes());
+        tableView.setItems((FXCollections.observableList(getPostalCodes())));
         System.out.println(p.getPostalCode());
     }
     private void setCells(){
@@ -37,7 +39,7 @@ public class PrimaryController {
         categoryColoumn.setCellValueFactory(new PropertyValueFactory<>("category"));
     }
 
-    private ObservableList<PostalCode> getPostalCodes(){
+    private ArrayList<PostalCode> getPostalCodes(){
         return postalCodeRegister.getRegister();
     }
 
@@ -45,5 +47,13 @@ public class PrimaryController {
         for (PostalCode p: FileHandler.readFromFile()){
             postalCodeRegister.addPostalCode(p);
         }
+    }
+    @FXML
+    public void searchByPostalCode(){
+        setTableViewValue(postalCodeRegister.searchByPostalCode("2040"));
+    }
+
+    private void setTableViewValue(List<PostalCode> list){
+        tableView.setItems(FXCollections.observableList(list));
     }
 }

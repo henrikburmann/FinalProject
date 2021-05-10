@@ -32,20 +32,17 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <Button layoutX="62.0" layoutY="50.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="62.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchByPostalCode" text="Button" />
             <Button layoutX="62.0" layoutY="93.0" mnemonicParsing="false" text="Button" />
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="507.0">
-         <children>
-            <TableView fx:id="tableView" prefHeight="455.0" prefWidth="584.0">
-              <columns>
-                <TableColumn fx:id="postalCodeColoumn" prefWidth="76.66664123535156" text="Postal code" />
-                  <TableColumn fx:id="postOfficeColoumn" minWidth="0.0" prefWidth="127.3333511352539" text="Post office" />
-                  <TableColumn fx:id="communeCodeColoumn" prefWidth="114.66667175292969" text="Commune code" />
-                  <TableColumn fx:id="communeNameColoumn" prefWidth="166.0" text="County" />
-                  <TableColumn fx:id="categoryColoumn" prefWidth="99.33334350585938" text="Category" />
-              </columns>
-            </TableView>
-         </children></AnchorPane>
+      <TableView fx:id="tableView" prefHeight="455.0" prefWidth="584.0">
+        <columns>
+          <TableColumn fx:id="postalCodeColoumn" prefWidth="76.66664123535156" text="Postal code" />
+            <TableColumn fx:id="postOfficeColoumn" minWidth="0.0" prefWidth="127.3333511352539" text="Post office" />
+            <TableColumn fx:id="communeCodeColoumn" prefWidth="114.66667175292969" text="Commune code" />
+            <TableColumn fx:id="communeNameColoumn" prefWidth="166.0" text="County" />
+            <TableColumn fx:id="categoryColoumn" prefWidth="99.33334350585938" text="Category" />
+        </columns>
+      </TableView>
   </items>
 </SplitPane>
