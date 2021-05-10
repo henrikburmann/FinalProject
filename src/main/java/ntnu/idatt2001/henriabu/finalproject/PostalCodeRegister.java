@@ -22,4 +22,8 @@ public class PostalCodeRegister {
      public void removePostalCode(PostalCode p){
         register.remove(p);
      }
+
+     public ObservableList<PostalCode> getRegister(){
+        return register;
+     }
 }
