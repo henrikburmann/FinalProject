@@ -7,13 +7,14 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="838.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="ntnu.idatt2001.henriabu.finalproject.PrimaryController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="175.0">
+            <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="246.0">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
@@ -32,8 +33,9 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <Button layoutX="62.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchByPostalCode" text="Button" />
-            <Button layoutX="62.0" layoutY="93.0" mnemonicParsing="false" text="Button" />
+            <Button layoutY="50.0" mnemonicParsing="false" onAction="#searchByPostalCode" prefHeight="25.0" prefWidth="246.0" text="Search by postal code" />
+            <Button layoutX="85.0" layoutY="126.0" mnemonicParsing="false" onAction="#searchByPostalOffice" prefHeight="25.0" prefWidth="75.0" text="Button" />
+            <TextField layoutY="152.0" prefHeight="25.0" prefWidth="246.0" />
          </children></AnchorPane>
       <TableView fx:id="tableView" prefHeight="455.0" prefWidth="584.0">
         <columns>

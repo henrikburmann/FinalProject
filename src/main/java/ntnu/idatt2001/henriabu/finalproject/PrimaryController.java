@@ -24,12 +24,8 @@ public class PrimaryController {
 
     public void initialize() throws IOException {
         setCells();
-        PostalCode p = new PostalCode("2040", "Kløfta", "3033", "Ullensaker",
-                "G");
-        postalCodeRegister.addPostalCode(p);
         readFromFile();
         tableView.setItems((FXCollections.observableList(getPostalCodes())));
-        System.out.println(p.getPostalCode());
     }
     private void setCells(){
         postalCodeColoumn.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
@@ -50,7 +46,12 @@ public class PrimaryController {
     }
     @FXML
     public void searchByPostalCode(){
-        setTableViewValue(postalCodeRegister.searchByPostalCode("2040"));
+        setTableViewValue(postalCodeRegister.searchByPostalCode("20"));
+    }
+
+    @FXML
+    public void searchByPostalOffice(){
+        setTableViewValue(postalCodeRegister.searchByPostOffice("OS"));
     }
 
     private void setTableViewValue(List<PostalCode> list){

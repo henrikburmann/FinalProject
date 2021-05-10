@@ -1,8 +1,5 @@
 package ntnu.idatt2001.henriabu.finalproject;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,8 +29,18 @@ public class PostalCodeRegister {
      }
 
      public List<PostalCode> searchByPostalCode(String code){
-        List<PostalCode> placesWithRequestedCode;
-        placesWithRequestedCode = register.stream().filter(e-> e.getPostalCode() == code).collect(Collectors.toList());
+        int length = code.length();
+        List<PostalCode> placesWithRequestedCode =
+                 register.stream().filter(e-> e.getPostalCode().substring(0, length).equals(code)).
+                         collect(Collectors.toList());
         return placesWithRequestedCode;
+    }
+
+    public List<PostalCode> searchByPostOffice(String postOffice){
+        int length = postOffice.length();
+        List<PostalCode> placesWithRequestedPostOffice =
+                register.stream().filter(e -> e.getPostalOffice().substring(0, length).
+                        equalsIgnoreCase(postOffice)).collect(Collectors.toList());
+        return placesWithRequestedPostOffice;
     }
 }
