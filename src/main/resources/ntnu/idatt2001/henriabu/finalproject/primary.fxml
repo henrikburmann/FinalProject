@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="ntnu.idatt2001.henriabu.finalproject.PrimaryController">
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="838.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="ntnu.idatt2001.henriabu.finalproject.PrimaryController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -31,13 +32,18 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <Button layoutX="62.0" layoutY="50.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="62.0" layoutY="93.0" mnemonicParsing="false" text="Button" />
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="507.0">
          <children>
-            <TableView fx:id="tableView" prefHeight="398.0" prefWidth="417.0">
+            <TableView fx:id="tableView" prefHeight="455.0" prefWidth="584.0">
               <columns>
-                <TableColumn fx:id="codeColoumn" prefWidth="192.66664123535156" text="Postal code" />
-                  <TableColumn fx:id="communeColoumn" prefWidth="223.33328247070312" text="Commune " />
+                <TableColumn fx:id="postalCodeColoumn" prefWidth="76.66664123535156" text="Postal code" />
+                  <TableColumn fx:id="postOfficeColoumn" minWidth="0.0" prefWidth="127.3333511352539" text="Post office" />
+                  <TableColumn fx:id="communeCodeColoumn" prefWidth="114.66667175292969" text="Commune code" />
+                  <TableColumn fx:id="communeNameColoumn" prefWidth="166.0" text="County" />
+                  <TableColumn fx:id="categoryColoumn" prefWidth="99.33334350585938" text="Category" />
               </columns>
             </TableView>
          </children></AnchorPane>

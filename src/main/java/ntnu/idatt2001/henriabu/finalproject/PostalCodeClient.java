@@ -17,7 +17,7 @@ public class PostalCodeClient extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 600, 400);
+        scene = new Scene(loadFXML("primary"), 838, 459);
         stage.setScene(scene);
         stage.show();
     }

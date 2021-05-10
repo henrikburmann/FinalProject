@@ -1,28 +1,59 @@
 package ntnu.idatt2001.henriabu.finalproject;
 
 public class PostalCode {
-    private String code;
-    private String name;
+    private String postalCode;
+    private String postalOffice;
+    private String communeCode;
+    private String communeName;
+    private String category;
 
-    public PostalCode(String code, String name){
-        this.code = code;
-        this.name = name;
+    public PostalCode(String postalCode, String postalOffice, String communeCode, String communeName
+    , String category){
+        this.postalCode = postalCode;
+        this.postalOffice = postalOffice;
+        this.communeCode = communeCode;
+        this.communeName = communeName;
+        this.category = category;
     }
 
-    public String getCode() {
-        return code;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
-    public String getName() {
-        return name;
+    public String getPostalOffice() {
+        return postalOffice;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPostalOffice(String postalOffice) {
+        this.postalOffice = postalOffice;
+    }
+
+    public String getCommuneCode() {
+        return communeCode;
+    }
+
+    public void setCommuneCode(String communeCode) {
+        this.communeCode = communeCode;
+    }
+
+    public String getCommuneName() {
+        return communeName;
+    }
+
+    public void setCommuneName(String communeName) {
+        this.communeName = communeName;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public boolean equals(Object o){
@@ -33,10 +64,10 @@ public class PostalCode {
             return false;
         }
         PostalCode postalCode =(PostalCode) o;
-        return postalCode.getCode().equals(this.code);
+        return postalCode.getPostalCode().equals(this.postalCode);
     }
 
     public String toString(){
-        return code + " " + name;
+        return postalCode + " " + postalOffice;
     }
 }
