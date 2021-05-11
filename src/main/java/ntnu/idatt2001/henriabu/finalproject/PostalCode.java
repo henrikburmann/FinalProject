@@ -7,8 +7,8 @@ public class PostalCode {
     private String communeName;
     private String category;
 
-    public PostalCode(String postalCode, String postalOffice, String communeCode, String communeName
-    , String category){
+    public PostalCode(String postalCode, String postalOffice, String communeCode, String communeName,
+                      String category){
         this.postalCode = postalCode;
         this.postalOffice = postalOffice;
         this.communeCode = communeCode;

@@ -11,7 +11,7 @@ public class FileHandler {
 
     public static List<PostalCode> readFromFile() throws IOException {
         List<PostalCode> postalCodes = new ArrayList<>();
-        BufferedReader bufferedReader = Files.newBufferedReader(Path.of("src/main/resources/postalCodes.txt"));
+        BufferedReader bufferedReader = Files.newBufferedReader(Path.of("src/main/resources/postalCodes.csv"));
         String line;
 
         while((line = bufferedReader.readLine()) != null){
