@@ -4,4 +4,5 @@ module ntnu.idatt2001.henriabu.finalproject {
 
     opens ntnu.idatt2001.henriabu.finalproject to javafx.fxml;
     exports ntnu.idatt2001.henriabu.finalproject;
+    exports ntnu.idatt2001.henriabu.finalproject.exceptions;
 }

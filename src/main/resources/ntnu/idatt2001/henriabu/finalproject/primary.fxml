@@ -11,7 +11,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="838.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="ntnu.idatt2001.henriabu.finalproject.PrimaryController">
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.henriabu.finalproject.PrimaryController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -34,8 +34,8 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <TextField fx:id="searchByPOTextField" layoutY="152.0" onKeyTyped="#searchByPostalOffice" prefHeight="25.0" prefWidth="246.0" />
-            <TextField fx:id="searchByPCTextField" layoutX="-4.0" layoutY="75.0" onKeyTyped="#searchByPostalCode" prefHeight="25.0" prefWidth="253.0" />
+            <TextField fx:id="searchByTownTextField" layoutY="152.0" onAction="#searchByTown" onKeyTyped="#searchByTown" prefHeight="25.0" prefWidth="246.0" />
+            <TextField fx:id="searchByPCTextField" layoutX="-4.0" layoutY="75.0" onAction="#searchByPostalCode" onKeyTyped="#searchByPostalCode" prefHeight="25.0" prefWidth="253.0" />
             <Button layoutY="241.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="25.0" prefWidth="246.0" text="View all" />
             <Label layoutX="16.0" layoutY="57.0" text="Search by postal code: " />
             <Label layoutX="14.0" layoutY="134.0" text="Search by postal office: " />
@@ -43,9 +43,9 @@
       <TableView fx:id="tableView" prefHeight="455.0" prefWidth="584.0">
         <columns>
           <TableColumn fx:id="postalCodeColoumn" prefWidth="76.66664123535156" text="Postal code" />
-            <TableColumn fx:id="postOfficeColoumn" minWidth="0.0" prefWidth="127.3333511352539" text="Post office" />
+            <TableColumn fx:id="townColoumn" minWidth="0.0" prefWidth="127.3333511352539" text="Town" />
             <TableColumn fx:id="communeCodeColoumn" prefWidth="114.66667175292969" text="Commune code" />
-            <TableColumn fx:id="communeNameColoumn" prefWidth="166.0" text="County" />
+            <TableColumn fx:id="communeNameColoumn" prefWidth="166.0" text="Commune" />
             <TableColumn fx:id="categoryColoumn" prefWidth="99.33334350585938" text="Category" />
         </columns>
       </TableView>

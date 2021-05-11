@@ -1,58 +1,53 @@
 package ntnu.idatt2001.henriabu.finalproject;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidPostalCodeException;
-import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidPostalOfficeException;
-import ntnu.idatt2001.henriabu.finalproject.exceptions.NoSuchPostalCodeException;
-import ntnu.idatt2001.henriabu.finalproject.exceptions.NoSuchPostalOfficeException;
+import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidTownException;
 
 public class PrimaryController {
-    @FXML private TableView<PostalCode> tableView;
-    @FXML private TableColumn<PostalCode, String> postalCodeColoumn;
-    @FXML private TableColumn<PostalCode, String> postOfficeColoumn;
-    @FXML private TableColumn<PostalCode, String> communeCodeColoumn;
-    @FXML private TableColumn<PostalCode, String> communeNameColoumn;
-    @FXML private TableColumn<PostalCode, String> categoryColoumn;
+    @FXML private TableView<PostPlace> tableView;
+    @FXML private TableColumn<PostPlace, String> postalCodeColoumn;
+    @FXML private TableColumn<PostPlace, String> townColoumn;
+    @FXML private TableColumn<PostPlace, String> communeCodeColoumn;
+    @FXML private TableColumn<PostPlace, String> communeNameColoumn;
+    @FXML private TableColumn<PostPlace, String> categoryColoumn;
 
     @FXML private TextField searchByPCTextField;
-    @FXML private TextField searchByPOTextField;
+    @FXML private TextField searchByTownTextField;
 
-    private PostalCodeRegister postalCodeRegister = new PostalCodeRegister();
+    private PostPlaceRegister postPlaceRegister = new PostPlaceRegister();
 
 
-    public void initialize() throws IOException, InvalidPostalCodeException, InvalidPostalOfficeException {
+    public void initialize() throws IOException, InvalidPostalCodeException, InvalidTownException {
         setCells();
         readFromFile();
         tableView.setItems((FXCollections.observableList(getPostalCodes())));
     }
     private void setCells(){
         postalCodeColoumn.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
-        postOfficeColoumn.setCellValueFactory(new PropertyValueFactory<>("postalOffice"));
+        townColoumn.setCellValueFactory(new PropertyValueFactory<>("town"));
         communeCodeColoumn.setCellValueFactory(new PropertyValueFactory<>("communeCode"));
         communeNameColoumn.setCellValueFactory(new PropertyValueFactory<>("communeName"));
         categoryColoumn.setCellValueFactory(new PropertyValueFactory<>("category"));
     }
 
-    private ArrayList<PostalCode> getPostalCodes(){
-        return postalCodeRegister.getRegister();
+    private ArrayList<PostPlace> getPostalCodes(){
+        return postPlaceRegister.getRegister();
     }
 
-    private void readFromFile() throws IOException, InvalidPostalCodeException, InvalidPostalOfficeException {
-        for (PostalCode p: FileHandler.readFromFile()){
-            postalCodeRegister.addPostalCode(p);
+    private void readFromFile() throws IOException, InvalidPostalCodeException, InvalidTownException {
+        for (PostPlace p: FileHandler.readFromFile()){
+            postPlaceRegister.addPostPlace(p);
         }
     }
 
@@ -60,8 +55,8 @@ public class PrimaryController {
     public void searchByPostalCode() {
         try{
         String code = searchByPCTextField.getText();
-        setTableViewValue(postalCodeRegister.searchByPostalCode(code));
-        searchByPOTextField.clear();}
+        setTableViewValue(postPlaceRegister.searchByPostalCode(code));
+        searchByTownTextField.clear();}
         catch (InvalidPostalCodeException e){
             GUIFactory.createError("Invalid postal code", "Postal codes cannot contain letters " +
                     "and are 4 digits long");
@@ -70,14 +65,14 @@ public class PrimaryController {
     }
 
     @FXML
-    public void searchByPostalOffice(){
+    public void searchByTown(){
         try{
-        String postalOffice = searchByPOTextField.getText();
-        setTableViewValue(postalCodeRegister.searchByPostOffice(postalOffice));
+        String postalOffice = searchByTownTextField.getText();
+        setTableViewValue(postPlaceRegister.searchByTown(postalOffice));
         searchByPCTextField.clear();
         tableView.refresh();}
-        catch (InvalidPostalOfficeException e){
-            GUIFactory.createError("Invalid postal office", "Postal office can only contain " +
+        catch (InvalidTownException e){
+            GUIFactory.createError("Invalid town", "Town can only contain " +
                     "letters, white spaces\nand dashes");
         }
     }
@@ -85,14 +80,14 @@ public class PrimaryController {
     public void viewAll(){
         setTableViewValue(getPostalCodes());
         searchByPCTextField.clear();
-        searchByPOTextField.clear();
+        searchByTownTextField.clear();
     }
 
     public void viewAbout(){
         GUIFactory.aboutAlert();
     }
 
-    private void setTableViewValue(List<PostalCode> list){
+    private void setTableViewValue(List<PostPlace> list){
         tableView.setItems(FXCollections.observableList(list));
     }
 
