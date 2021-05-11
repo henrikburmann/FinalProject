@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,6 +25,9 @@ public class PrimaryController {
 
     @FXML private TextField searchByPCTextField;
     @FXML private TextField searchByTownTextField;
+
+    @FXML private MenuButton categoryMenuButton;
+    
 
     private PostPlaceRegister postPlaceRegister = new PostPlaceRegister();
 
@@ -53,27 +57,30 @@ public class PrimaryController {
 
     @FXML
     public void searchByPostalCode() {
-        try{
         String code = searchByPCTextField.getText();
+        try{
         setTableViewValue(postPlaceRegister.searchByPostalCode(code));
         searchByTownTextField.clear();}
         catch (InvalidPostalCodeException e){
             GUIFactory.createError("Invalid postal code", "Postal codes cannot contain letters " +
                     "and are 4 digits long");
+            searchByPCTextField.deleteText(code.length()-1, code.length());
         }
 
     }
 
     @FXML
     public void searchByTown(){
+        String town = searchByTownTextField.getText();
         try{
-        String postalOffice = searchByTownTextField.getText();
-        setTableViewValue(postPlaceRegister.searchByTown(postalOffice));
+        setTableViewValue(postPlaceRegister.searchByTown(town));
         searchByPCTextField.clear();
         tableView.refresh();}
         catch (InvalidTownException e){
-            GUIFactory.createError("Invalid town", "Town can only contain " +
+            GUIFactory.createError("Invalid town",
+                    "Town can only contain " +
                     "letters, white spaces\nand dashes");
+            searchByTownTextField.deleteText(town.length()-1, town.length());
         }
     }
     @FXML

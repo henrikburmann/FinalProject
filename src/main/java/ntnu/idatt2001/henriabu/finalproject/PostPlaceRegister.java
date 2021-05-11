@@ -7,13 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Class responsible for storing the PostPlaces and handling the methods that use the register.
+ */
 public class PostPlaceRegister {
     private ArrayList<PostPlace> register;
-
-    public PostPlaceRegister(){
+        public PostPlaceRegister(){
         this.register = new ArrayList<>();
     }
 
+    /**
+     * Loops through the list and compares each object to the
+     * @param postPlace
+     * @return
+     */
     public boolean addPostPlace(PostPlace postPlace){
         for (PostPlace p: register){
             if (postPlace.equals(p)){
@@ -23,9 +30,6 @@ public class PostPlaceRegister {
         register.add(postPlace);
         return true;
     }
-     public void removePostalCode(PostPlace p){
-        register.remove(p);
-     }
 
      public ArrayList<PostPlace> getRegister(){
         return register;
