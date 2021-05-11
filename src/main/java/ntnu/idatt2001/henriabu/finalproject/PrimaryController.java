@@ -14,6 +14,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidPostalCodeException;
+import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidPostalOfficeException;
 import ntnu.idatt2001.henriabu.finalproject.exceptions.NoSuchPostalCodeException;
 import ntnu.idatt2001.henriabu.finalproject.exceptions.NoSuchPostalOfficeException;
 
@@ -33,7 +35,7 @@ public class PrimaryController {
     private PostalCodeRegister postalCodeRegister = new PostalCodeRegister();
 
 
-    public void initialize() throws IOException {
+    public void initialize() throws IOException, InvalidPostalCodeException, InvalidPostalOfficeException {
         setCells();
         readFromFile();
         tableView.setItems((FXCollections.observableList(getPostalCodes())));
@@ -50,7 +52,7 @@ public class PrimaryController {
         return postalCodeRegister.getRegister();
     }
 
-    private void readFromFile() throws IOException {
+    private void readFromFile() throws IOException, InvalidPostalCodeException, InvalidPostalOfficeException {
         for (PostalCode p: FileHandler.readFromFile()){
             postalCodeRegister.addPostalCode(p);
         }
@@ -62,20 +64,24 @@ public class PrimaryController {
         String code = searchByPCTextField.getText();
         setTableViewValue(postalCodeRegister.searchByPostalCode(code));
         searchByPOTextField.clear();}
-        catch (NoSuchPostalCodeException e){
-            GUIFactory.createError("", "There is no post office with this postal code");
+        catch (InvalidPostalCodeException e){
+            GUIFactory.createError("Invalid postal code", "Postal codes cannot contain letters " +
+                    "and are 4 digits long");
         }
-        catch (IllegalArgumentException e){
-            GUIFactory.createError("", "No postal code is longer than 4 digits");
-        }
-        tableView.refresh();
+
     }
 
     @FXML
-    public void searchByPostalOffice() throws NoSuchPostalOfficeException {
+    public void searchByPostalOffice(){
+        try{
         String postalOffice = searchByPOTextField.getText();
         setTableViewValue(postalCodeRegister.searchByPostOffice(postalOffice));
         searchByPCTextField.clear();
+        tableView.refresh();}
+        catch (InvalidPostalOfficeException e){
+            GUIFactory.createError("Invalid postal office", "Postal office can only contain " +
+                    "letters");
+        }
     }
     @FXML
     public void viewAll(){

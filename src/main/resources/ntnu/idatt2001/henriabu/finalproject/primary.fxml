@@ -35,7 +35,7 @@
               </menus>
             </MenuBar>
             <TextField fx:id="searchByPOTextField" layoutY="152.0" onKeyTyped="#searchByPostalOffice" prefHeight="25.0" prefWidth="246.0" />
-            <TextField fx:id="searchByPCTextField" layoutX="-4.0" layoutY="75.0" onKeyPressed="#searchByPostalCode" prefHeight="25.0" prefWidth="253.0" />
+            <TextField fx:id="searchByPCTextField" layoutX="-4.0" layoutY="75.0" onKeyTyped="#searchByPostalCode" prefHeight="25.0" prefWidth="253.0" />
             <Button layoutY="241.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="25.0" prefWidth="246.0" text="View all" />
             <Label layoutX="16.0" layoutY="57.0" text="Search by postal code: " />
             <Label layoutX="14.0" layoutY="134.0" text="Search by postal office: " />

@@ -1,5 +1,8 @@
 package ntnu.idatt2001.henriabu.finalproject;
 
+import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidPostalCodeException;
+import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidPostalOfficeException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +12,7 @@ import java.util.List;
 
 public class FileHandler {
 
-    public static List<PostalCode> readFromFile() throws IOException {
+    public static List<PostalCode> readFromFile() throws IOException, InvalidPostalCodeException, InvalidPostalOfficeException {
         List<PostalCode> postalCodes = new ArrayList<>();
         BufferedReader bufferedReader = Files.newBufferedReader(Path.of("src/main/resources/postalCodes.csv"));
         String line;

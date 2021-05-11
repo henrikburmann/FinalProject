@@ -1,5 +1,8 @@
 package ntnu.idatt2001.henriabu.finalproject;
 
+import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidPostalCodeException;
+import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidPostalOfficeException;
+
 public class PostalCode {
     private String postalCode;
     private String postalOffice;
@@ -8,7 +11,13 @@ public class PostalCode {
     private String category;
 
     public PostalCode(String postalCode, String postalOffice, String communeCode, String communeName,
-                      String category){
+                      String category) throws InvalidPostalCodeException, InvalidPostalOfficeException {
+        if (!(postalCode.matches("[0-9]+")) || !(postalCode.length() == 4)){
+            throw new InvalidPostalCodeException("Postal code must me 4 digits long and integers only");
+        }
+        /*if (!postalOffice.chars().allMatch(Character::isLetter)){
+            throw new InvalidPostalOfficeException("Postal code can only consist of letters");
+        }*/
         this.postalCode = postalCode;
         this.postalOffice = postalOffice;
         this.communeCode = communeCode;
