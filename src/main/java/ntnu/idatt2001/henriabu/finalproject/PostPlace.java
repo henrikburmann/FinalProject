@@ -46,10 +46,18 @@ public class PostPlace {
         this.category = category;
     }
 
+    /**
+     *
+     * @return communeCode. Only used to set cellValue
+     */
     public String getCommuneCode() {
         return communeCode;
     }
 
+    /**
+     *
+     * @return communeName. Only used to set cellValue
+     */
     public String getCommuneName() {
         return communeName;
     }
@@ -79,9 +87,11 @@ public class PostPlace {
     }
 
     /**
-     * Equals method
+     * Equals method to check if to postPlaces are equal. Since postal codes are unique this
+     * is used to compare to postPlace objects.
      * @param o
-     * @return
+     * @return True if the two objects are the same object if both are instanceOf PostPlace and have
+     * the same postalCode. False if not.
      */
     public boolean equals(Object o){
         if (this == o){
@@ -94,6 +104,10 @@ public class PostPlace {
         return postPlace.getPostalCode().equals(this.postalCode);
     }
 
+    /**
+     * toString that isn't used in the program
+     * @return String consisting of postalCode and town
+     */
     public String toString(){
         return postalCode + " " + town;
     }
