@@ -15,9 +15,9 @@ public class PostalCode {
         if (!(postalCode.matches("[0-9]+")) || !(postalCode.length() == 4)){
             throw new InvalidPostalCodeException("Postal code must me 4 digits long and integers only");
         }
-        /*if (!postalOffice.chars().allMatch(Character::isLetter)){
+        if (!postalOffice.matches("[a-zA-ZæøåÆØÅ\\s-]+")){
             throw new InvalidPostalOfficeException("Postal code can only consist of letters");
-        }*/
+        }
         this.postalCode = postalCode;
         this.postalOffice = postalOffice;
         this.communeCode = communeCode;

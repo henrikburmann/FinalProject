@@ -27,8 +27,6 @@ public class PrimaryController {
     @FXML private TableColumn<PostalCode, String> communeNameColoumn;
     @FXML private TableColumn<PostalCode, String> categoryColoumn;
 
-    @FXML private Button searchByPCButton;
-    @FXML private Button searchByPOButton;
     @FXML private TextField searchByPCTextField;
     @FXML private TextField searchByPOTextField;
 
@@ -80,7 +78,7 @@ public class PrimaryController {
         tableView.refresh();}
         catch (InvalidPostalOfficeException e){
             GUIFactory.createError("Invalid postal office", "Postal office can only contain " +
-                    "letters");
+                    "letters, white spaces\nand dashes");
         }
     }
     @FXML

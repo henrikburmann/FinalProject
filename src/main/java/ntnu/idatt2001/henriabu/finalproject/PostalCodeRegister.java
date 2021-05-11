@@ -59,7 +59,7 @@ public class PostalCodeRegister {
 
     public List<PostalCode> searchByPostOffice(String postOffice) throws InvalidPostalOfficeException {
         int length = postOffice.length();
-        if (length>0 && !postOffice.matches("[a-zA-zæøåÆØÅ]+")){
+        if (length>0 && !postOffice.matches("[a-zA-zæøåÆØÅ\\s-]+")){
             throw new InvalidPostalOfficeException("Postal code can only consist of letters");
         }
         List<PostalCode> placesWithRequestedPostOffice = new ArrayList<>();
