@@ -63,4 +63,10 @@ public class PostPlaceRegister {
         }
         return placesWithRequestedTown;
     }
+
+    public List<PostPlace> searchByCategory(String category){
+        List<PostPlace> allInChosenCategory =
+                register.stream().filter(e-> e.getCategory().equals(category)).collect(Collectors.toList());
+        return allInChosenCategory;
+    }
 }

@@ -7,10 +7,7 @@ import java.util.List;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidPostalCodeException;
 import ntnu.idatt2001.henriabu.finalproject.exceptions.InvalidTownException;
@@ -26,8 +23,13 @@ public class PrimaryController {
     @FXML private TextField searchByPCTextField;
     @FXML private TextField searchByTownTextField;
 
-    @FXML private MenuButton categoryMenuButton;
-    
+    @FXML private Button categoryGButton;
+    @FXML private Button categoryFButton;
+    @FXML private Button categoryBButton;
+    @FXML private Button categoryPButton;
+    @FXML private Button categorySButton;
+    @FXML private Button categoryAllButton;
+
 
     private PostPlaceRegister postPlaceRegister = new PostPlaceRegister();
 
@@ -36,6 +38,30 @@ public class PrimaryController {
         setCells();
         readFromFile();
         tableView.setItems((FXCollections.observableList(getPostalCodes())));
+        categoryButtonSetup();
+    }
+
+    private void categoryButtonSetup(){
+        setCategoryButtonsOnAction(categoryBButton, "B", "Both street adresses and post boxes");
+        setCategoryButtonsOnAction(categoryFButton, "F", "Multiple areas of use");
+        setCategoryButtonsOnAction(categoryGButton, "G", "Street addresses (and place addresses),\n meaning green " +
+                "mail boxes");
+        setCategoryButtonsOnAction(categoryPButton, "P", "PostBoxes");
+        setCategoryButtonsOnAction(categorySButton, "S", "Service postal code (these aren't used for post addresses)");
+        categoryAllButton.setOnAction(e -> viewAll());
+        categoryAllButton.setTooltip(new Tooltip("Show all"));
+        categoryAllButton.setOnAction(e -> {viewAll();
+            searchByPCTextField.clear();
+            searchByTownTextField.clear();
+        });
+    }
+
+    private void setCategoryButtonsOnAction(Button button, String category, String toolTip){
+        button.setOnAction(e -> {setTableViewValue(postPlaceRegister.searchByCategory(category));
+            searchByPCTextField.clear();
+            searchByTownTextField.clear();
+        });
+        button.setTooltip(new Tooltip(toolTip));
     }
     private void setCells(){
         postalCodeColoumn.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
