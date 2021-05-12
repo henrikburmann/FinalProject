@@ -25,7 +25,7 @@ public class PrimaryController {
     @FXML private TableColumn<PostPlace, String> communeNameColoumn;
     @FXML private TableColumn<PostPlace, String> categoryColoumn;
 
-    //The textField used to search
+    //The textFields used to search
     @FXML private TextField searchByPCTextField;
     @FXML private TextField searchByTownTextField;
 
