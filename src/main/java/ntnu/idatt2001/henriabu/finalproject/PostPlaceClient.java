@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * JavaFX App
  */
-public class PostalCodeClient extends Application {
+public class PostPlaceClient extends Application {
 
     private static Scene scene;
 
@@ -27,7 +27,7 @@ public class PostalCodeClient extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PostalCodeClient.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PostPlaceClient.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
