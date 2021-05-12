@@ -21,7 +21,7 @@ public class PostPlaceRegister {
      * Loops through the list and compares each object to the PostPlace being added.
      * Uses the equals method from the PostPlace class to check if the object
      * being added is equal (has the the postal code) to any other of the post
-     * places in the list. This is to avoid duplicates being added to the list
+     * places already in the list. This is to avoid duplicates being added to the list
      * @param postPlace The postPlace being added
      * @return True if there are no equal postPlaces already in the register.
      * False if there are.
@@ -49,22 +49,22 @@ public class PostPlaceRegister {
      * where the postal code's substring from index 0 to the index of the requested code's length is equal to the
      * requested code. This makes it possible to for example search for all the postal codes on Romerike (starts with
      * 20)
-     * @param code The postal code that is being searched for
-     * @return A list of the PostPlaces with starting with the requested code
+     * @param code The postal code that is being searched for.
+     * @return A list of the PostPlaces starting with the requested code.
      * @throws InvalidPostalCodeException Thrown if the passed code is invalid
      */
      public List<PostPlace> searchByPostalCode(String code) throws InvalidPostalCodeException {
          //Sets int length equal to the length of the requested code
          int length = code.length();
-         //Postal codes are 4 digits long and consists of only integers. Therefore an InvalidPostalCodeException
-         //is thrown if the length is larger than 4 or contains non-integers. Since you can search for the begin
-         //of a code exceptions aren't thrown for lengths shorter than 4.
+         //Postal codes are 4 digits long and consists only of integers. Therefore an InvalidPostalCodeException
+         //is thrown if the length is larger than 4 or contains non-integers. Since you can search for the beginning
+         //of a code, exceptions aren't thrown for lengths shorter than 4.
          if (length>4 || (length>0 && !( code.matches("[0-9]+")))){//To avoid exceptions being thrown when the
-             // passed code is empty, after the user deletes what it has written - length must be larger than zero to
+             // code is empty, after the user deletes what it has written, length must be larger than zero to
              // throw InvalidPostalCodeExceptions
              throw new InvalidPostalCodeException("Postal code must me 4 digits long and integers only");
          }
-         // Streams through the register and filtrating and collecting the postPlaces which substring
+         // Streams through the register and filtrating and collecting the postPlaces which substrings
          //from index 0 to index length equals the requested code, and sets list placesWithRequested code equal
          //to this
         List<PostPlace> placesWithRequestedCode =
@@ -74,11 +74,9 @@ public class PostPlaceRegister {
     }
 
     /**
-     * Method that loops through the register and collects all the postPlaces who's town's string is equal
-     * to the requested town's, or if the passed town's string is shorter than the town's it is being compared to:
-     * the towns where the substring from index 0 to the index of the requested town string's length is equal to
-     * the requested town's string are collected. In this way you can for example search for all the
-     * towns beginning with Os.
+     * Method that loops through the register and collects all the postPlaces who's town's substring from index 0 to
+     * the index equal to the length of the town being searched for. In this way you can for example search for all the
+     * towns beginning with OS.
      * @param town The requested town
      * @return A list of the postPlaces who's town is equal to, or it's beginning is equal to, the requested town
      * @throws InvalidTownException Thrown if the requested town is invalid
@@ -87,15 +85,15 @@ public class PostPlaceRegister {
         //Sets int length equal to the requested town's length
         int length = town.length();
         //If the length is larger than zero and the string contains a char which isn't in the norwegian alphabet, a
-        // whitespace or a dash InvalidTownException is thrown. To avoid exceptions being thrown when the
-        //passed town is empty, after the user deletes what it has written - length must be larger than zero to
+        // whitespace or a dash, InvalidTownException is thrown. To avoid exceptions being thrown when the
+        //passed town is empty, after the user deletes what it has written, length must be larger than zero to
         //throw InvalidTownException
         if (length>0 && !town.matches("[a-zA-zæøåÆØÅ\\s-]+")){
             throw new InvalidTownException("Postal code can only consist of letters");
         }
 
-        //Since the different towns have different length a for loop is used with a double if-statement for only
-        // checking the town's which strings are at least the length of int length to avoid trying to make a
+        //Since the different towns have different lengths, a for loop is used with a double if-statement to only
+        // check the towns which strings are at least the length of int length to avoid trying to make a
         // substring that is larger than the string it self and therefore avoiding an StringIndexOutOfBoundsException
         List<PostPlace> placesWithRequestedTown = new ArrayList<>();
         for (PostPlace p: register){
@@ -107,7 +105,7 @@ public class PostPlaceRegister {
                 }
             }
         }
-        //If the string isn't empty the list is sorted by the length of the town string in ascending order. This is
+        //If the string isn't empty, the list is sorted by the length of the town string in ascending order. This is
         // so you for example actually get OS on the top instead of OSLO when searching for "os".
         if (length >0){
             placesWithRequestedTown.sort(Comparator.comparingInt(s -> s.getTown().length()));}

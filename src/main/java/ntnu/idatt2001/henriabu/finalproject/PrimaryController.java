@@ -89,7 +89,7 @@ public class PrimaryController {
     }
 
     /**
-     * Help method to set the property value for the table coloumns
+     * Help method to set the property value for the table columns
      */
     private void setCells(){
         postalCodeColoumn.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
@@ -104,7 +104,7 @@ public class PrimaryController {
      * Don't feel it is necessary to sort the objects since the user has the option to sort in tableView and in the file
       the postal codes are listed ascending order.
      * The exception is of course when searching for towns, but that is handled in PostPlaceRegister
-     * @return
+     * @return the register of postPlaces
      */
     private ArrayList<PostPlace> getPostalCodes(){
         return postPlaceRegister.getRegister();
@@ -124,7 +124,7 @@ public class PrimaryController {
     }
 
     /**
-     * Method to search by postal codes. Uses the searchByPostalCode() method from postPlaceRegister
+     * Method to search by postal codes. Uses the searchByPostalCode() method from postPlaceRegister.
      * The method is called every time a key is typed in searchByPCTextField and tableView therefore updates as the
      * user types.
      */
@@ -141,7 +141,7 @@ public class PrimaryController {
             GUIFactory.createError("Invalid postal code", "Postal codes cannot contain letters " +
                     "and are 4 digits long");
             //Since InvalidPostalCodeException only is thrown when an invalid character is typed we remove the last
-            // character from the textField after the error box is shown
+            // character from the textField after the error box is shown.
             searchByPCTextField.deleteText(code.length()-1, code.length());
         }
 
@@ -183,7 +183,7 @@ public class PrimaryController {
     }
 
     /**
-     * The method that calls the static method aboutAlert()
+     * The method that calls the static method aboutAlert() from GUIFactory
      */
     public void viewAbout(){
         GUIFactory.aboutAlert();
@@ -192,7 +192,7 @@ public class PrimaryController {
     /**
      * Help method to set the tableView value with a list. Since tableView demands an observableList the list is cast
      * to an observableList
-     * @param list The list that is being set as the the tableView value
+     * @param list The list that is being set as the tableView value
      */
     private void setTableViewValue(List<PostPlace> list){
         tableView.setItems(FXCollections.observableList(list));

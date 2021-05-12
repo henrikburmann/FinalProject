@@ -15,7 +15,7 @@ public class PostPlace {
 
     /**
      *
-     * @param postalCode The postal code. Must only consist of integers and be 4 digits lon
+     * @param postalCode The postal code. Must only consist of integers and be 4 digits long
      * @param town The town where the post place is located. Must only consist of the
      *                     letters in the norwegian alphabet, whitespaces and dashes.
      * @param communeCode The commune code where the town is located
@@ -78,18 +78,18 @@ public class PostPlace {
         return town;
     }
 
+    /**
+     *
+     * @return category
+     */
     public String getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     /**
-     * Equals method to check if to postPlaces are equal. Since postal codes are unique this
-     * is used to compare to postPlace objects.
-     * @param o
+     * Equals method to check if two postPlaces are equal. Since postal codes are unique this
+     * is used to compare two postPlace objects.
+     * @param o The object being compared
      * @return True if the two objects are the same object if both are instanceOf PostPlace and have
      * the same postalCode. False if not.
      */
